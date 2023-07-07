@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>
+        <% title %>
+    </title>
+</head>
+<body >
+
+<form action="/filter" method="GET" >
+    <div class="mb-3 pt-3 p-lg-2">
+        <label for="filtro" class="form-label" onchange="">Titulo Pelicula</label>
+        <input type="text" class="form-control" id="filtro" name="filtro" placeholder="Titulo Pelicula">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+
+
+<div class="mb-3 pt-3 p-lg-2">
+    <label for="yearInput" class="form-label">Año de lanzamiento</label>
+    <input type="number" class="form-control" id="yearInput">
+</div>
+
+<div class="mb-3 pt-3 p-lg-2">
+    <button class="btn btn-primary">Mostrar Todos</button>
+</div>
+
+
+<% if (data.size > 0){ %>
+  <div class="table-responsive-sm">
+        <table class="table mb-3" id="tableData">
+            <thead>
+            <tr>
+                <th scope="col">movie_id</th>
+                <th scope="col">title</th>
+                <th scope="col">phase</th>
+                <th scope="col">category_name</th>
+                <th scope="col">release_year</th>
+                <th scope="col">running_time</th>
+                <th scope="col">rating_name</th>
+                <th scope="col">disc_format_name</th>
+                <th scope="col">number_discs</th>
+                <th scope="col">viewing_format_name</th>
+                <th scope="col">aspect_ratio_name</th>
+                <th scope="col">status</th>
+                <th scope="col">release_date</th>
+                <th scope="col">budget</th>
+                <th scope="col">gross</th>
+                <th scope="col">time_stamp</th>
+
+            </tr>
+            </thead>
+            <tbody id="tBody">
+            <% for (const [key, value] of data){ %>
+                <tr>
+                    <td><%= value.movie_id %></td>
+                    <td><%= value.title %></td>
+                    <td><%= value.phase %></td>
+                    <td><%= value.category_name %></td>
+                    <td><%= value.release_year %></td>
+                    <td><%= value.running_time %></td>
+                    <td><%= value.rating_name %></td>
+                    <td><%= value.disc_format_name %></td>
+                    <td><%= value.number_discs %></td>
+                    <td><%= value.viewing_format_name %></td>
+                    <td><%= value.aspect_ratio_name %></td>
+                    <td><%= value.status %></td>
+                    <td><%= value.release_date %></td>
+                    <td><%= value.budget %></td>
+                    <td><%= value.gross %></td>
+                    <td><%= value.time_stamp %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+<% } else { %>
+    <h4 > No hay datos </h4>
+<% } %>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
